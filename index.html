@@ -1,15 +1,217 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Website Sementara Saya</title>
-       <style>
-           body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-       </style>
-   </head>
-   <body>
-       <h1>Halo Dunia!</h1>
-       <p>Website ini berhasil di-deploy menggunakan GitHub Pages.</p>
-   </body>
-   </html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 26th Birthday Leni! ✨</title>
+    <!-- File CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Pustaka Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- SECTION 1: GRANDIOSE HERO LANDING PAGE -->
+    <section class="hero-section">
+        <div class="backdrop-glow"></div>
+        <div class="hero-container">
+            <div class="image-frame">
+                <img src="images/leni.jpg" alt="Leni" class="leni-img">
+                <img src="images/cake.png" alt="Cake" class="cake-img">
+            </div>
+            <h1 class="grand-title">Happy 26th Birthday,<br><span class="highlight-name">Leni</span> ✨</h1>
+            <p class="grand-subtitle">May your day be as magnificent and beautiful as you are.</p>
+            
+            <!-- Tombol Interaktif Confetti -->
+            <button class="btn-confetti" onclick="burstConfetti()">Celebrate! 🎉</button>
+        </div>
+        <div class="scroll-hint">
+            <p>Scroll down to explore your day</p>
+            <div class="arrow-down">⌄</div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE GOLDEN RATIO MEMORY WALL -->
+    <section class="memory-wall-section">
+        <h2 class="section-title">Our Precious Memories 🎞️</h2>
+        <p class="section-subtitle">A glimpse of the beautiful journey we share</p>
+        
+        <div class="magazine-gallery">
+            <div class="memory-item item-hero">
+                <img src="images/foto1.jpg" alt="Golden Hour">
+                <div class="caption-left">MIRROR!</div>
+                <div class="caption-right">LENI • 26</div>
+            </div>
+
+            <div class="memory-item item-wide">
+                <img src="images/foto2.jpg" alt="Quiet Wins">
+                <div class="caption-left">Sewa satu lantai</div>
+                <div class="caption-right">LENI • 26</div>
+            </div>
+
+            <div class="memory-item item-box-a">
+                <img src="images/foto3.jpg" alt="Soft Light">
+                <div class="caption-left">Liat kaset ayah</div>
+                <div class="caption-right">LENI • 26</div>
+            </div>
+
+            <div class="memory-item item-box-b">
+                <img src="images/foto4.jpg" alt="The Long Table">
+                <div class="caption-left">Mirror again!</div>
+                <div class="caption-right">LENI • 26</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION 3: VENUE CHOICES -->
+    <section class="venue-section">
+        <h2 class="section-title">Where are we going for birthday dinner?</h2>
+        <p class="section-subtitle">Pick your absolute favorite culinary indulgence</p>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/doubleusteak.jpg" alt="U Steak">
+                </div>
+                <h3>U Steak by Chef Widhi</h3>
+                <p>Juicy & premium local steak flavor</p>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/sushitei.jpg" alt="Sushi Tei">
+                </div>
+                <h3>Sushi Tei</h3>
+                <p>Your all-time favorite sushi & sashimi platter</p>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/tawan.png" alt="Ta Wan">
+                </div>
+                <h3>Ta Wan</h3>
+                <p>Warm, comforting, and delicious Chinese cuisine</p>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/custom.jpg" alt="Custom choice">
+                </div>
+                <h3>Pilihan Leni!</h3>
+                <p>Wherever you want to go, I'll take you there ✨</p>
+            </div>
+        </div>
+
+        <!-- Indomaret Point Coffee Reward -->
+        <div class="drink-section">
+            <img src="images/pointcoffee.jpeg" alt="Point Coffee" class="drink-img">
+            <div class="drink-text">
+                <h3>Plus Drink Reward: Point Coffee ☕</h3>
+                <p>Bisa sekalian redeem kopi di Indomaret Point terdekat ya!</p>
+                <p><i>jangan lupa install indomaret poinku duluu biar dapat voucher</i></p>
+                <p><i>dan bawa KTP 🪪</i></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: COUNTDOWN & LETTER -->
+    <section class="countdown-section">
+        <h2 class="section-title">A Sealed Message for You</h2>
+        <p id="countdown-status">Surat ini terkunci dan baru bisa dibuka tepat pada hari ulang tahunmu:</p>
+        
+        <div class="timer-display" id="timer">
+            <div class="time-box"><span id="days">00</span><label>Hari</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Jam</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>Menit</label></div>
+            <div class="time-box"><span id="seconds">00</span><label>Detik</label></div>
+        </div>
+
+        <button id="letterBtn" class="btn-letter" disabled onclick="openLetter()">Buka Surat dari-ku 🔒</button>
+
+        <!-- Dokumen Surat Rahasia -->
+        <div id="secretLetter" class="letter-content">
+            <h3>Hai Lenoyy,</h3>
+            <br>
+            <p>Selamat ulang tahun yang ke-26!</p>
+            <p>Akhirnya countdown-nya beres dan surat ini kebuka juga. Di hari spesialmu ini, aku cuma mau bilang terima kasih banyak ya udah selalu jadi orang yang luar biasa luar-dalam.</p>
+            <p>Semoga di usia yang baru ini kamu senantiasa diberikan kebahagiaan yang melimpah, kesehatan, keselamatan, dan kelancaran untuk semua hal hebat yang lagi kamu usahakan saat ini.</p>
+            <p>Yuk, setelah ini langsung pilih tempat makan malam dan ambil kopinya! Jalani hari ini dengan senyuman paling manis kamu ya. *Happy Birthday!* ❤️</p>
+            <br>
+            <p>ー Yours Truly, Dika ー</p>
+        </div>
+    </section>
+
+    <!-- LOGIKA JAVASCRIPT -->
+    <script>
+        // 1. Otomatis meledak saat pertama kali web dibuka
+        window.addEventListener('DOMContentLoaded', () => {
+            burstConfetti();
+        });
+
+        // 2. Fungsi tombol Confetti manual
+        function burstConfetti() {
+            confetti({
+                particleCount: 120,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // 3. Efek scroll bertahap ke arah warna putih murni
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const targetPosition = window.innerHeight * 0.5;
+            
+            if (scrollPosition > targetPosition) {
+                document.body.style.backgroundColor = "#ffffff";
+            } else {
+                document.body.style.backgroundColor = "#fff0f5";
+            }
+        });
+
+        // 4. Hitung Mundur Waktu (Target: 25 Mei 2026 00:00:00 WIB)
+        const targetDate = new Date("2026-04-25T00:00:00+07:00").getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                
+                document.getElementById("countdown-status").innerText = "Yey! Waktunya telah tiba, silakan buka suratmu: 😊🎉";
+                const btn = document.getElementById("letterBtn");
+                btn.removeAttribute("disabled");
+                btn.classList.add("active");
+                btn.innerText = "Buka Surat Dari Aku 🔓";
+                return;
+            }
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+
+        // 5. Buka Surat Rahasia
+        function openLetter() {
+            const letter = document.getElementById("secretLetter");
+            letter.style.display = "block";
+            letter.scrollIntoView({ behavior: 'smooth' });
+            
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
+</body>
+</html>
