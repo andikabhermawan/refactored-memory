@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy 26th Birthday Leni! ✨</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <!-- File CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Pustaka Canvas Confetti -->
@@ -11,7 +12,7 @@
 </head>
 <body>
 
-    <!-- SECTION 1: GRANDIOSE HERO LANDING PAGE -->
+    <!-- SECTION 1: HERO LANDING PAGE -->
     <section class="hero-section">
         <div class="backdrop-glow"></div>
         <div class="hero-container">
@@ -74,7 +75,7 @@
                 <div class="card-img-wrapper">
                     <img src="images/doubleusteak.jpg" alt="U Steak">
                 </div>
-                <h3>U Steak by Chef Widhi</h3>
+                <h3>Double U Steak by Chef Widhi</h3>
                 <p>Juicy & premium local steak flavor</p>
             </div>
             <div class="card">
@@ -95,7 +96,7 @@
                 <div class="card-img-wrapper">
                     <img src="images/custom.jpg" alt="Custom choice">
                 </div>
-                <h3>Pilihan Leni!</h3>
+                <h3>Leni's Choice!</h3>
                 <p>Wherever you want to go, I'll take you there ✨</p>
             </div>
         </div>
@@ -107,15 +108,77 @@
                 <h3>Plus Drink Reward: Point Coffee ☕</h3>
                 <p>Bisa sekalian redeem kopi di Indomaret Point terdekat ya!</p>
                 <p><i>jangan lupa install indomaret poinku duluu biar dapat voucher</i></p>
-                <p><i>dan bawa KTP 🪪</i></p>
+                <p><i>DAN bawa KTP 🪪</i></p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: COUNTDOWN & LETTER -->
+    <!-- SECTION 4: Schedule -->
+    <section class="schedule-section">
+        <h2 class="section-title">Our Birthday Itinerary</h2>
+        <p class="section-subtitle">Rencana seru yang bakal kita lakuin bareng</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">01. Start</span>
+                    <h3>Jemput Leni</h3>
+                    <p>Princess cantik ✨</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">02. Dinner</span>
+                    <h3>Makan Malam</h3>
+                    <p>Ketempat sesuai pilihan diatas yaa</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">03. Refresh</span>
+                    <h3>Minum & Redeem point coffee</h3>
+                    <p>semoga bisa redeem</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">04. Stroll</span>
+                    <h3>Jalan-Jalan Santai</h3>
+                    <p>bakar kalori tadi wkwkw</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">05. Talk</span>
+                    <h3>Ngobrol Deep Talk </h3>
+                    <p>Cari tempat nyaman buat duduk, cerita-cerita</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="time-tag">06. End</span>
+                    <h3>Night Ride & Pulang </h3>
+                    <p>Pulang sambil nunggu 00.00 ga sih?!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: COUNTDOWN & LETTER -->
     <section class="countdown-section">
         <h2 class="section-title">A Sealed Message for You</h2>
-        <p id="countdown-status">Surat ini terkunci dan baru bisa dibuka tepat pada hari ulang tahunmu:</p>
+        <p id="countdown-status">Surat ini terkunci dan baru bisa dibuka setelah kamu berumur 26 tahun:</p>
         
         <div class="timer-display" id="timer">
             <div class="time-box"><span id="days">00</span><label>Hari</label></div>
@@ -124,19 +187,25 @@
             <div class="time-box"><span id="seconds">00</span><label>Detik</label></div>
         </div>
 
-        <button id="letterBtn" class="btn-letter" disabled onclick="openLetter()">Buka Surat dari-ku 🔒</button>
+        <button id="letterBtn" class="btn-letter" disabled onclick="openLetter()">Buka Surat Dariku 🔒</button>
 
         <!-- Dokumen Surat Rahasia -->
         <div id="secretLetter" class="letter-content">
             <h3>Hai Lenoyy,</h3>
             <br>
-            <p>Selamat ulang tahun yang ke-26!</p>
-            <p>Akhirnya countdown-nya beres dan surat ini kebuka juga. Di hari spesialmu ini, aku cuma mau bilang terima kasih banyak ya udah selalu jadi orang yang luar biasa luar-dalam.</p>
-            <p>Semoga di usia yang baru ini kamu senantiasa diberikan kebahagiaan yang melimpah, kesehatan, keselamatan, dan kelancaran untuk semua hal hebat yang lagi kamu usahakan saat ini.</p>
-            <p>Yuk, setelah ini langsung pilih tempat makan malam dan ambil kopinya! Jalani hari ini dengan senyuman paling manis kamu ya. *Happy Birthday!* ❤️</p>
+            <p>Yeayy, Selamat ulang tahun yang ke-26! 🎉</p>
+            <p>Di hari spesialmu ini, aku cuma mau bilang terima kasih banyak ya udah selalu jadi orang yang luar biasa luar-dalam.</p>
+            <br>
+            <p>Semoga di usia yang baru ini kamu senantiasa diberikan kebahagiaan yang melimpah, kesehatan, keselamatan, dan kelancaran untuk semua hal hebat yang lagi kamu usahakan saat ini..</p>
+            <p>Aamiin</p>
+            <br>
+            <p>Sehabis hari ini, ayo jalani hari dengan senyuman paling manis kamu yaaa. *Happy Birthday!* ❤️</p>
             <br>
             <p>ー Yours Truly, Dika ー</p>
         </div>
+
+        <br>
+        <p>Made with Love ©May2026</p>
     </section>
 
     <!-- LOGIKA JAVASCRIPT -->
@@ -168,7 +237,7 @@
         });
 
         // 4. Hitung Mundur Waktu (Target: 25 Mei 2026 00:00:00 WIB)
-        const targetDate = new Date("2026-04-25T00:00:00+07:00").getTime();
+        const targetDate = new Date("2026-05-25T00:00:00+07:00").getTime();
 
         const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
@@ -181,11 +250,11 @@
                 document.getElementById("minutes").innerText = "00";
                 document.getElementById("seconds").innerText = "00";
                 
-                document.getElementById("countdown-status").innerText = "Yey! Waktunya telah tiba, silakan buka suratmu: 😊🎉";
+                document.getElementById("countdown-status").innerText = "Yeay! Waktunya telah tiba, silakan buka suratmu: 😊🎉";
                 const btn = document.getElementById("letterBtn");
                 btn.removeAttribute("disabled");
                 btn.classList.add("active");
-                btn.innerText = "Buka Surat Dari Aku 🔓";
+                btn.innerText = "Buka Surat Dariku 🔓";
                 return;
             }
 
