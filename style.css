@@ -5,6 +5,7 @@
     --text-muted: #6c757d;
     --accent-gold: #d4af37;
     --accent-royal-pink: #d63384;
+    --accent-gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 100%);
     --gradient-hero: linear-gradient(135deg, #fff0f5 0%, #ffe3ed 100%);
     --shadow-premium: 0 20px 40px rgba(214, 51, 132, 0.15);
 }
@@ -21,6 +22,127 @@ body {
     background-color: var(--bg-primary);
     transition: background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     overflow-x: hidden;
+}
+
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #161a1d; 
+    z-index: 9999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* transisi opacity dan transform (scale) */
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+                visibility 1.5s; /* Menggunakan transisi halus 1.5 detik */
+}
+
+/* Kelas pemicu saat loading selesai */
+#preloader.loaded {
+    opacity: 0;           
+    transform: scale(1.15); 
+    visibility: hidden;   
+}
+
+.preloader-wrap {
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    transition: opacity 0.5s ease; /* Membuat teks di dalam ikut memudar */
+}
+
+#preloader.loaded .preloader-wrap {
+    opacity: 0;
+}
+
+.preloader-sub {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--accent-royal-pink);
+    margin-bottom: 10px;
+}
+
+.preloader-main {
+    /* font-family: 'Playfair Display', serif; */
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    /* font-weight: bold; */
+    letter-spacing: -0.5px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Garis Loading Bar Minimalis */
+.preloader-bar {
+    width: 180px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.preloader-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-royal-pink), #ffb6c1);
+    animation: fillProgress 2.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fillProgress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* STYLING BACKGROUND PARTIKEL FLOATING --- */
+.floating-particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none; /* Mencegah partikel menghalangi klik pada tombol */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    opacity: 0;
+    animation: floatAnimation infinite linear;
+    user-select: none;
+    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.5));
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
+}
+
+/* --- KODE BARU: ANIMASI REVEAL ON SCROLL --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s cubic-bezier(0.215, 0.610, 0.355, 1), transform 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* --- SECTION 1: HERO LANDING PAGE --- */
@@ -41,7 +163,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    /* position: relative; */
     
     /* --- KODE BARU: MENAMPILKAN GAMBAR DENGAN TINTA WARNA --- */
     background: linear-gradient(
@@ -123,6 +245,15 @@ body {
     display: inline-block;
 }
 
+/* Sentuhan Aksen Emas pada Teks Nama */
+/*.highlight-name {
+    background: var(--accent-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+}*/
+
 .grand-subtitle {
     font-size: 1.1rem;
     font-style: italic;
@@ -146,6 +277,14 @@ body {
     transition: all 0.3s ease;
     font-family: 'Segoe UI', sans-serif;
 }
+
+/* Kombinasi Warna Emas & Pink Royal Pada Tombol Utama */
+/*.btn-confetti {
+    background: linear-gradient(135deg, #bf953f 0%, var(--accent-royal-pink) 60%);
+    color: white; border: none; padding: 16px 40px; font-size: 1.1rem; font-weight: bold;
+    border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(214, 51, 132, 0.35);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-family: 'Segoe UI', sans-serif;
+}*/
 
 .btn-confetti:hover {
     transform: translateY(-3px) scale(1.03);
@@ -189,9 +328,13 @@ body {
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
     color: var(--text-main);
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    z-index: 2;
 }
 
 .section-subtitle {
@@ -209,13 +352,15 @@ body {
     grid-template-columns: 1.2fr 1fr 1fr; 
     grid-template-rows: 240px 240px;      
     gap: 15px;                            
-    background: #eae5d9;                  
+    background: #eae5d9;
+    /* background: var(--accent-gold-gradient); */
     padding: 15px;
     border-radius: 4px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    z-index: 2;
 }
 
-.memory-item {
+/* .memory-item {
     position: relative;
     overflow: hidden;
     background: #333;
@@ -233,6 +378,33 @@ body {
 .memory-item:hover img {
     transform: scale(1.03);
     filter: brightness(1.05);
+} */
+
+.memory-item { 
+    position: relative; 
+    overflow: hidden; 
+    background: #333; 
+    display: flex; 
+}
+
+.memory-item img { 
+    width: 100%; 
+    height: 140%; /* bigger so enough space for parallax*/
+    object-fit: cover; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    will-change: transform; /* Optimasi browser agar pergerakan parallax terasa mulus di HP */
+    filter: brightness(0.95); 
+    transition: filter 0.5s ease; 
+
+    /* posisikan di tengah mutlak sebelum dihitung oleh JavaScript */
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Pertahankan efek hover untuk mempercantik ketajaman gambar */
+.memory-item:hover img { 
+    filter: brightness(1.05); 
 }
 
 .caption-left, .caption-right {
@@ -306,6 +478,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    z-index: 2;
 }
 
 .card {
@@ -351,42 +524,174 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
+/* Efek ketika kartu dipilih */
+.card.selected {
+    transform: scale(1.03) translateY(-5px);
+    border: 2px solid #bf953f; /* Garis tepi emas mewah */
+    box-shadow: 0 15px 35px rgba(191, 149, 63, 0.25);
+}
+
+/* Membuat kartu lain yang TIDAK dipilih menjadi sedikit transparan */
+.grid-container.has-selection .card:not(.selected) {
+    opacity: 0.5;
+    transform: scale(0.97);
+    filter: grayscale(0.2);
+}
+
+/* Container Tombol Konfirmasi */
+.selection-confirm-container {
+    margin-top: 40px;
+    min-height: 60px; /* Menjaga ruang agar layout tidak melompat saat tombol muncul */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Desain Tombol Konfirmasi Bergaya Pop-in */
+.btn-confirm-venue {
+    background: linear-gradient(135deg, #bf953f 0%, var(--accent-royal-pink) 100%);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3);
+    font-family: 'Segoe UI', sans-serif;
+    
+    /* Animasi muncul dari kecil ke besar secara anggun */
+    display: none; 
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Kelas pemicu kemunculan tombol lewat JS */
+.btn-confirm-venue.show {
+    display: inline-block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.btn-confirm-venue:active {
+    transform: scale(0.95); /* Efek membal saat ditekan di layar HP */
+}
+
+/* KODE BARU: Mengubah kursor dan efek visual kartu setelah statusnya dikunci (Locked) */
+.grid-container.selection-finalized .card {
+    cursor: not-allowed !important; /* Mengubah ikon kursor tanda terkunci */
+}
+
+.grid-container.selection-finalized .card:not(.selected) {
+    opacity: 0.3; /* Semakin meredupkan opsi yang tidak terpilih agar pilihan utama makin solid */
+    filter: grayscale(0.6);
+}
+
+.grid-container.selection-finalized .card.selected {
+    transform: scale(1); /* Kembalikan ke ukuran tenang */
+    border: 2px solid #006643; /* Ubah warna border dari emas menjadi hijau sukses agar senada dengan tombol */
+    box-shadow: 0 10px 25px rgba(0, 102, 67, 0.15);
+}
+
+/* //////////////////////// */
 /* Reward Minuman */
 .drink-section {
-    margin-top: 60px;
-    background: #f0debb;
-    border-radius: 20px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    flex-wrap: wrap;
+    margin-top: 80px; 
+    background: linear-gradient(145deg, #ffffff 0%, #f4faf7 100%);
+    border-radius: 24px; 
+    padding: 35px;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 40px;
+    box-shadow: 0 15px 35px rgba(0, 102, 67, 0.04); 
+    border: 1px solid #e1f2eb;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    text-align: left; /* Rata kiri agar lebih bercerita */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.drink-img {
-    width: 180px;
-    height: 130px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 15px;
+/* Efek interaktif tipis saat Leni mendarat di section ini */
+.drink-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 102, 67, 0.08);
+    border-color: #c3e6d8;
 }
 
-.drink-text {
-    text-align: left;
-    max-width: 500px;
+/* Dekorasi lingkaran transparan estetik di sudut latar belakang */
+.drink-section::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(0, 102, 67, 0.03) 0%, rgba(0,0,0,0) 70%);
+    bottom: -50px;
+    right: -50px;
+    pointer-events: none;
 }
 
-.drink-text h3 {
-    margin-bottom: 8px;
-    color: #006643; /* Warna khas kopi premium */
+.drink-img { 
+    width: 160px; 
+    height: 160px; 
+    object-fit: cover; 
+    border-radius: 18px; 
+    box-shadow: 0 10px 25px rgba(0, 102, 67, 0.15);
+    transition: transform 0.5s ease;
 }
 
-.drink-text p {
+.drink-section:hover .drink-img {
+    transform: scale(1.05) rotate(-2deg); /* Efek rotasi foto kopi yang estetik */
+}
+
+.drink-text { 
+    flex: 1;
+}
+
+/* Label penanda kecil di atas judul */
+.drink-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #006643;
+    background-color: #e1f2eb;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
     font-family: 'Segoe UI', sans-serif;
-    color: var(--text-muted);
-    font-size: 0.95rem;
+}
+
+.drink-text h3 { 
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #006643; 
+    margin-bottom: 10px; 
+    font-family: 'Playfair Display', serif;
+}
+
+.drink-text p { 
+    font-family: 'Segoe UI', sans-serif; 
+    color: var(--text-muted); 
+    font-size: 0.95rem; 
+    line-height: 1.6;
+}
+
+/* RESPONSIVE UNTUK LAYAR HP LENI */
+@media (max-width: 600px) {
+    .drink-section {
+        flex-direction: column-reverse; /* Foto pindah ke bawah teks di HP agar rapi */
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    .drink-img {
+        width: 100%;
+        height: 150px; /* Gambar melebar manis di layar HP */
+    }
 }
 
 /* --- SECTION 4: THE BIRTHDAY RUNDOWN / SCHEDULE --- */
@@ -404,19 +709,35 @@ body {
     margin: 50px auto 0 auto;
     padding: 0 10px;
     text-align: left;
+    z-index: 2;
 }
+
 
 /* Membuat garis vertikal putus-putus di balik konten */
 .timeline::after {
     content: '';
     position: absolute;
     width: 2px;
-    background: linear-gradient(to bottom, var(--accent-royal-pink) 70%, rgba(214, 51, 132, 0));
-    background-size: 2px 10px; /* Membuat efek garis putus-putus elegan */
+    /* background: linear-gradient(to bottom, var(--accent-royal-pink) 70%, rgba(214, 51, 132, 0)); */
+    background: #e2e8f0;
+    /* background: linear-gradient(to bottom, #bf953f 85%, rgba(191, 149, 63, 0)); */
+    /* background-size: 2px 10px; Membuat efek garis putus-putus elegan */
     top: 10px;
     bottom: 10px;
-    left: 30px;
+    left: 20px;
     z-index: 1;
+}
+
+.timeline-progress-bar {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728);
+    top: 10px;
+    left: 20px;
+    z-index: 2;
+    height: 0%; /* Diatur dinamis oleh JavaScript berdasarkan posisi scroll */
+    transition: height 0.1s ease-out; /* Animasi mengalir lembut */
+    box-shadow: 0 0 8px rgba(191, 149, 63, 0.5);
 }
 
 /* Pembungkus per item kegiatan */
@@ -424,27 +745,38 @@ body {
     position: relative;
     margin-bottom: 40px;
     padding-left: 70px;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* Titik lingkaran penanda kegiatan */
 .timeline-dot {
     position: absolute;
-    left: 9px;
-    top: 30px;
-    width: 18px;
-    height: 18px;
+    left: 11px;
+    top: 12px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background-color: white;
-    border: 4px solid var(--accent-royal-pink);
-    box-shadow: 0 0 10px rgba(214, 51, 132, 0.4);
-    transition: all 0.3s ease;
+    /* background-color: white; */
+    background-color: #e2e8f0;
+    /* border: 4px solid var(--accent-royal-pink); */
+    border: 2px solid #ffffff;
+    /* box-shadow: 0 0 10px rgba(214, 51, 132, 0.4); */
+    z-index: 4;
+    transition: all 0.4s ease;
 }
 
-.timeline-item:hover .timeline-dot {
+/* Kelas Aktif saat Dilewati Scroll (Dicuci oleh JS) */
+.timeline-item.active-node .timeline-dot {
+    background-color: #ffffff;
+    border: 3px solid #bf953f; 
+    transform: scale(1.25);
+    box-shadow: 0 0 12px rgba(191, 149, 63, 0.8);
+}
+
+/* .timeline-item:hover .timeline-dot {
     background-color: var(--accent-royal-pink);
     transform: scale(1.2);
-}
+} */
 
 /* Kotak isi pesan kegiatan */
 .timeline-content {
@@ -453,7 +785,20 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
     border: 1px solid #fceef3;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */
+
+    /* Efek Parallax Kartu: Gerakan transisi saat menyala */
+    transform: translateY(15px);
+    opacity: 0.5;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Kartu Menyala Aktif saat Dilewati */
+.timeline-item.active-node .timeline-content {
+    transform: translateY(0);
+    opacity: 1;
+    box-shadow: 0 10px 25px rgba(214, 51, 132, 0.08);
+    border-color: #ffe3ed;
 }
 
 .timeline-item:hover .timeline-content {
@@ -474,6 +819,13 @@ body {
     font-family: 'Segoe UI', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all 0.4s;
+}
+
+/* addiotion */
+.timeline-item.active-node .time-tag {
+    color: var(--accent-royal-pink); 
+    background: #ffeef4;
 }
 
 .timeline-content h3 {
@@ -497,20 +849,55 @@ body {
 }
 
 /* --- SECTION 5: COUNTDOWN & LETTER --- */
-.countdown-section {
+/* .countdown-section {
     min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 80px 20px;
-    background-color:#fff0f5;
+    
+} */
+
+.countdown-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 240, 245, 0.75) 0%,   /* Warna merah muda awal (transparansi 85%) */
+        rgba(255, 227, 237, 0.85) 100%   /* Warna merah muda akhir (transparansi 85%) */
+    ),
+    url('images/end-bg.jpg');
+    background-size: cover;
+    background-position: center;
+
+    /* Kunci utama efek parallax native CSS */
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+
+    z-index: 1;
 }
 
+
+/* Trik otomatis khusus untuk mendeteksi perangkat mobile/touch screen */
+/* @media (pointer: coarse) {
+    .countdown-section {
+        background-attachment: scroll; 
+        background-position: center center;
+    }
+} */
+
 .timer-display {
+    /* position: absolute; */
     display: flex;
     gap: 20px;
     margin: 35px 0;
+    /* position: relative; */
+    z-index: 2;
 }
 
 .time-box {
@@ -558,6 +945,7 @@ body {
     color: white;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(214, 51, 132, 0.3);
+    z-index: 2;
 }
 
 .btn-letter.active:hover {
@@ -579,6 +967,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     border: 1px solid #ffe3ed;
     animation: elegantFadeIn 0.8s ease forwards;
+    z-index: 2;
 }
 
 @keyframes elegantFadeIn {

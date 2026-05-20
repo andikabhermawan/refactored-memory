@@ -12,6 +12,18 @@
 </head>
 <body>
 
+    <div id="preloader">
+        <div class="preloader-wrap">
+            <div class="preloader-sub">026 // INITIALIZING</div>
+            <div class="preloader-main">Preparing something special for you</div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-particles" id="particlesContainer"></div>
+
     <!-- SECTION 1: HERO LANDING PAGE -->
     <section class="hero-section">
         <div class="backdrop-glow"></div>
@@ -34,10 +46,11 @@
 
     <!-- SECTION 2: THE GOLDEN RATIO MEMORY WALL -->
     <section class="memory-wall-section">
-        <h2 class="section-title">Our Precious Memories 🎞️</h2>
-        <p class="section-subtitle">A glimpse of the beautiful journey we share</p>
-        
-        <div class="magazine-gallery">
+        <div class="reveal">
+            <h2 class="section-title">Our Precious Memories 🎞️</h2>
+            <p class="section-subtitle">A glimpse of the beautiful journey we share</p>
+        </div>
+        <div class="magazine-gallery reveal">
             <div class="memory-item item-hero">
                 <img src="images/foto1.jpg" alt="Mirror" loading="lazy">
                 <div class="caption-left">MIRROR!</div>
@@ -67,32 +80,33 @@
 
     <!-- SECTION 3: VENUE CHOICES -->
     <section class="venue-section">
-        <h2 class="section-title">Where are we going for birthday dinner?</h2>
-        <p class="section-subtitle">Pick your absolute favorite culinary indulgence</p>
-        
-        <div class="grid-container">
-            <div class="card">
+        <div class="reveal">
+            <h2 class="section-title">Where are we going for birthday dinner?</h2>
+            <p class="section-subtitle">Pick your absolute favorite culinary indulgence</p>
+        </div>
+        <div class="grid-container" id="venueGrid">
+            <div class="card reveal" onclick="selectVenue(this, 'Double U Steak by Chef Widhi')">
                 <div class="card-img-wrapper">
                     <img src="images/doubleusteak.jpg" alt="U Steak" loading="lazy">
                 </div>
                 <h3>Double U Steak by Chef Widhi</h3>
                 <p>Juicy & premium local steak flavor</p>
             </div>
-            <div class="card">
+            <div class="card reveal" onclick="selectVenue(this, 'Sushi Tei')">
                 <div class="card-img-wrapper">
                     <img src="images/sushitei.jpg" alt="Sushi Tei" loading="lazy">
                 </div>
                 <h3>Sushi Tei</h3>
                 <p>Your all-time favorite sushi & sashimi platter</p>
             </div>
-            <div class="card">
+            <div class="card reveal" onclick="selectVenue(this, 'Ta Wan')">
                 <div class="card-img-wrapper">
                     <img src="images/tawan.png" alt="Ta Wan" loading="lazy">
                 </div>
                 <h3>Ta Wan</h3>
                 <p>Warm, comforting, and delicious Chinese cuisine</p>
             </div>
-            <div class="card">
+            <div class="card reveal" onclick="selectVenue(this, 'Leni\'s Choice')">
                 <div class="card-img-wrapper">
                     <img src="images/custom.jpg" alt="Custom choice" loading="lazy">
                 </div>
@@ -101,25 +115,38 @@
             </div>
         </div>
 
+        <div class="selection-confirm-container">
+            <button id="confirmVenueBtn" class="btn-confirm-venue" onclick="lockFinalChoice()">
+                Lock <span id="selectedVenueName"></span> As My Choice! 💖
+            </button>
+        </div>
+
         <!-- Indomaret Point Coffee Reward -->
-        <div class="drink-section">
-            <img src="images/pointcoffee.jpeg" alt="Point Coffee" loading="lazy" class="drink-img">
+        <div class="drink-section reveal" id="drinkSection">
+            <span class="drink-badge">Unlocked Reward 🎁</span>
             <div class="drink-text">
                 <h3>Plus Drink Reward: Point Coffee ☕</h3>
                 <p>Bisa sekalian redeem kopi di Indomaret Point terdekat ya!</p>
                 <p><i>jangan lupa install indomaret poinku duluu biar dapat voucher</i></p>
                 <p><i>DAN bawa KTP 🪪</i></p>
             </div>
+            <img src="images/pointcoffee.jpeg" alt="Point Coffee" loading="lazy" class="drink-img">
+            
         </div>
     </section>
 
     <!-- SECTION 4: Schedule -->
     <section class="schedule-section">
-        <h2 class="section-title">Our Birthday Itinerary</h2>
-        <p class="section-subtitle">Rencana seru yang bakal kita lakuin bareng</p>
-
+        <div class="reveal">
+            <h2 class="section-title">Our Birthday Itinerary</h2>
+            <p class="section-subtitle">Amazing plan for your amazing day</p>
+        </div>
+        
         <div class="timeline">
-            <div class="timeline-item">
+
+            <div class="timeline-progress-bar" id="timelineProgress"></div>
+
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">01. Start</span>
@@ -128,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">02. Dinner</span>
@@ -137,7 +164,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">03. Refresh</span>
@@ -146,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">04. Stroll</span>
@@ -155,7 +182,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">05. Talk</span>
@@ -164,7 +191,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="time-tag">06. End</span>
@@ -176,7 +203,9 @@
     </section>
 
     <!-- SECTION 5: COUNTDOWN & LETTER -->
+    <!-- <div class="foot-bg"></div> -->
     <section class="countdown-section">
+        
         <h2 class="section-title">A Sealed Message for You</h2>
         <p id="countdown-status">Surat ini terkunci dan baru bisa dibuka setelah kamu berumur 26 tahun:</p>
         
@@ -205,17 +234,18 @@
         </div>
 
         <br>
-        <p>Made with Love ©May2026</p>
+        <p style="text-align: center; color: #a0a0a0; font-size: 0.8rem; font-family: 'Segoe UI', sans-serif;">
+            Crafted with Love ©May2026</p>
     </section>
 
     <!-- LOGIKA JAVASCRIPT -->
     <script>
-        // 1. Otomatis meledak saat pertama kali web dibuka
+        // Otomatis meledak saat pertama kali web dibuka
         window.addEventListener('DOMContentLoaded', () => {
             burstConfetti();
+            createParticles(); // Jalankan fungsi pembuat efek melayang
         });
 
-        // 2. Fungsi tombol Confetti manual
         function burstConfetti() {
             confetti({
                 particleCount: 120,
@@ -224,19 +254,213 @@
             });
         }
 
-        // 3. Efek scroll bertahap ke arah warna putih murni
+        // LOGIKA GABUNGAN SCROLL EVENT
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            // 1. Penanganan ganti warna latar belakang dinamis Anda yang lama
             const targetPosition = window.innerHeight * 0.5;
-            
             if (scrollPosition > targetPosition) {
                 document.body.style.backgroundColor = "#ffffff";
             } else {
                 document.body.style.backgroundColor = "#fff0f5";
             }
+
+            // 2. Penanganan pemicu kelas Active untuk reveal on scroll Anda yang lama
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(reveal => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+
+            // 3. EFEK PARALLAX UNTUK MEMORY WALL
+            const memoryItems = document.querySelectorAll('.memory-item');
+            memoryItems.forEach(item => {
+                const img = item.querySelector('img');
+                const itemTop = item.getBoundingClientRect().top;
+                const itemHeight = item.offsetHeight;
+
+                // Cek apakah elemen Memory Wall sedang terlihat di layar HP Leni
+                if (itemTop < windowHeight && itemTop + itemHeight > 0) {
+                    // Hitung persentase pergeseran berdasarkan posisi scroll
+                    const totalDistance = windowHeight + itemHeight;
+                    const scrolledDistance = windowHeight - itemTop;
+                    const scrollPercentage = scrolledDistance / totalDistance;
+
+                    // Geser gambar secara vertikal menggunakan transform translateY
+                    // Nilai -10% sampai 10% menentukan seberapa jauh gambar bergerak di dalam bingkai
+                    const yMove = (scrollPercentage * 36) - 18; 
+                    // img.style.transform = `translateY(${yMove}%)`;
+                    img.style.transform = `translate(-50%, ${-50 + yMove}%) scale(1.15)`;
+                }
+            });
+
+            // 4. PARALLAX PROGRESSIVE TIMELINE FLOW
+            const timeline = document.querySelector('.timeline');
+            const progressBar = document.getElementById('timelineProgress');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            if (timeline) {
+                const timelineTop = timeline.getBoundingClientRect().top;
+                const timelineHeight = timeline.offsetHeight;
+                
+                // Menghitung seberapa jauh layar telah melewati garis awal linimasa (pemicu di tengah layar)
+                const triggerPoint = windowHeight * 0.6; 
+                const scrolledIntoTimeline = triggerPoint - timelineTop;
+                
+                // Hitung persentase progres (0% sampai 100%)
+                let progressPercent = (scrolledIntoTimeline / (timelineHeight - 100)) * 100;
+                progressPercent = Math.max(0, Math.min(100, progressPercent)); // Kunci di angka 0 - 100
+                
+                // Update tinggi garis emas secara real-time mengikuti scroll
+                progressBar.style.height = `${progressPercent}%`;
+
+                // Cek setiap item kegiatan, jika sudah dilewati garis emas, nyalakan kartunya!
+                timelineItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    if (itemTop < triggerPoint) {
+                        item.classList.add('active-node');
+                    } else {
+                        item.classList.remove('active-node');
+                    }
+                });
+            }
         });
 
-        // 4. Hitung Mundur Waktu (Target: 25 Mei 2026 00:00:00 WIB)
+        // GENERATOR PARTIKEL MELAYANG OTOMATIS (SPARKLES & HEARTS)
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleTypes = ['✨', '❤️', '🌸', '✧'];
+            const maxParticles = 20; // Dibatasi agar HP tidak lag
+
+            for (let i = 0; i < maxParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.innerText = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+                
+                // Koordinat posisi acak di layar lebar
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // Variasi ukuran dan durasi melayang secara acak
+                particle.style.fontSize = (Math.random() * 14 + 10) + 'px';
+                particle.style.animationDuration = (Math.random() * 10 + 12) + 's';
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // VENUE SELECTION
+        let venueTerpilih = "";
+        let isLocked = false; 
+
+        // When clicking the venue
+        function selectVenue(element, namaRestoran) {
+            if (isLocked) return;
+
+            venueTerpilih = namaRestoran;
+            
+            const grid = document.getElementById('venueGrid');
+            const cards = grid.querySelectorAll('.card');
+            const confirmBtn = document.getElementById('confirmVenueBtn');
+            const nameSpan = document.getElementById('selectedVenueName');
+
+            // 1. Berikan sinyal ke grid bahwa seleksi telah dimulai
+            grid.classList.add('has-selection');
+
+            // 2. Hapus kelas selected dari semua kartu, lalu pasang hanya di kartu yang diklik
+            cards.forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // 3. Masukkan nama restoran ke dalam teks tombol konfirmasi
+            nameSpan.innerText = namaRestoran;
+            
+            // 4. Munculkan tombol konfirmasi dengan efek pop-in
+            confirmBtn.classList.add('show');
+
+            // 5. Letupan Confetti Lokal (Muncul tepat di posisi kartu yang diklik)
+            const rect = element.getBoundingClientRect();
+            // Menghitung koordinat x & y relatif untuk pustaka canvas-confetti
+            const xPosition = (rect.left + rect.width / 2) / window.innerWidth;
+            const yPosition = (rect.top + rect.height / 2) / window.innerHeight;
+
+            confetti({
+                particleCount: 25,
+                spread: 40,
+                origin: { x: xPosition, y: yPosition }
+            });
+        }
+
+        // When clicking lock
+        function lockFinalChoice() {
+            isLocked = true;
+            
+            // confetti saat locked
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+
+            // Berikan feedback instan pada tombol
+            const confirmBtn = document.getElementById('confirmVenueBtn');
+            confirmBtn.innerText = `Locked! See you at ${venueTerpilih} 🥰❤️`;
+            confirmBtn.style.background = "#006643"; // Berubah warna hijau sukses yang tenang
+            confirmBtn.style.pointerEvents = "none"; // Matikan fungsi klik ganda
+
+            // chosen card
+            document.getElementById('venueGrid').classList.add('selection-finalized');
+            
+            // Berikan jeda sebentar, lalu gulir layar secara PERLAHAN & ANGGUN
+            setTimeout(() => {
+                const targetElement = document.getElementById('drinkSection');
+                // Menggunakan fungsi scroll lambat kustom (Durasi 2500ms = 2.5 detik)
+                smoothScrollTo(targetElement, 2500); 
+            }, 1800);
+            // setTimeout(() => {
+            //     document.querySelector('.drink-section').scrollIntoView({ 
+            //         behavior: 'smooth', 
+            //         block: 'start' 
+            //     });
+            // }, 1500);
+
+        }
+
+        // FUNGSI KUSTOM 3: MEMBUAT EFEK SCROLL HALUS & LAMBAT (ANTI-NGEBUT)
+        function smoothScrollTo(target, duration) {
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                
+                // Rumus matematika Easing (Ease-In-Out Quad) agar gerakan melambat di akhir secara alami
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+
+        // COUNTDOWN (Target: 25 Mei 2026 00:00:00 WIB)
         const targetDate = new Date("2026-05-25T00:00:00+07:00").getTime();
 
         const countdownInterval = setInterval(() => {
@@ -269,7 +493,7 @@
             document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
         }, 1000);
 
-        // 5. Buka Surat Rahasia
+        // Buka Surat Rahasia
         function openLetter() {
             const letter = document.getElementById("secretLetter");
             letter.style.display = "block";
@@ -281,6 +505,25 @@
                 origin: { y: 0.6 }
             });
         }
+
+        // Preloader
+        window.addEventListener('DOMContentLoaded', () => {
+            // Memberikan waktu 2 detik untuk animasi loading bar menyelesaikan tugasnya
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('loaded'); // Memicu efek fade-out & zoom
+                
+                // KODE DISESUAIKAN: Confetti meledak 200ms setelah efek pudar dimulai 
+                // agar menyatu indah dengan transisi sinematik
+                setTimeout(burstConfetti, 200); 
+            }, 2500);
+
+            createParticles(); // Fungsi partikel melayang Anda yang kemarin
+        });
+        
     </script>
 </body>
+<!-- <footer style="text-align: center; padding: 40px 20px; color: #a0a0a0; font-size: 0.8rem; background: #ffffff; font-family: 'Segoe UI', sans-serif;">
+    Crafted with love by Andika for Leni's 26th Birthday • 2026
+</footer> -->
 </html>
