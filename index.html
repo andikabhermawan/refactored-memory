@@ -125,15 +125,61 @@
         <div class="drink-section reveal" id="drinkSection">
             <span class="drink-badge">Unlocked Reward 🎁</span>
             <div class="drink-text">
-                <h3>Plus Drink Reward: Point Coffee ☕</h3>
-                <p>Bisa sekalian redeem kopi di Indomaret Point terdekat ya!</p>
-                <p><i>jangan lupa install indomaret poinku duluu biar dapat voucher</i></p>
-                <p><i>DAN bawa KTP 🪪</i></p>
+                <h3>Plus Drink Reward: Point Coffee</h3>
+                <p>Redeem voucher di App Indomaret Pointku</p>
+                <p><i>jangan lupa install <b>dan</b> bawa KTP 🪪</i></p>
             </div>
             <img src="images/pointcoffee.jpeg" alt="Point Coffee" loading="lazy" class="drink-img">
             
         </div>
     </section>
+
+    <!-- Section: Dress Code -->
+    <div class="dresscode-section reveal" id="dresscodeSection">
+        <div class="dresscode-container">
+            <div class="dresscode-visual">
+                <!-- <span class="dresscode-icon">✨👗✨</span> -->
+                <img src="images/dresscode-icon.png" alt="Dresscode Guide" class="dresscode-png-img" loading="lazy">
+            </div>
+            <div class="dresscode-text">
+                <span class="dresscode-badge">OUTFIT GUIDE</span>
+                <h3>What to Wear Tonight? </h3>
+                <p>choose your armor pallete</p>
+                
+                <ul class="dresscode-list">
+                    <div class="color-palette-container">
+                        <!-- <p class="palette-instruction">rekom warna disinii </p> -->
+                        
+                        <div class="swatches-grid">
+                            <div class="swatch-item" onclick="previewMatch('Earth Tones 🍂', 'Nuansa cokelat, cream, atau beige hangat.')">
+                                <div class="swatch-circle" style="background-color: #c6a484;"></div>
+                                <span class="swatch-name">Earth Tone</span>
+                            </div>
+
+                            <div class="swatch-item" onclick="previewMatch('Sage/Olive Green 🌿', 'Warna hijau segar yang menenangkan, just enough.')">
+                                <div class="swatch-circle" style="background-color: #8a9a86;"></div>
+                                <span class="swatch-name">Green Vibes</span>
+                            </div>
+
+                            <div class="swatch-item" onclick="previewMatch('Elegant White 🤍', 'Putih bersih yang minimalis untuk selalu memancarkan aura cantikmu.')">
+                                <div class="swatch-circle" style="background-color: #f8f9fa; border: 1px solid #dee2e6;"></div>
+                                <span class="swatch-name">Pure White</span>
+                            </div>
+
+                            <div class="swatch-item" onclick="previewMatch('Classic Black 🖤', 'Hitam pekat, elegan, simpel, misterius, tapi gak pernah salah.')">
+                                <div class="swatch-circle" style="background-color: #2b2b2b;"></div>
+                                <span class="swatch-name">Midnight Black</span>
+                            </div>
+                        </div>
+
+                        <div id="outfitPreviewBox" class="outfit-preview-box">
+                            Wear whatever makes you feel the most comfortable.
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- SECTION 4: Schedule -->
     <section class="schedule-section">
@@ -355,6 +401,25 @@
             }
         }
 
+        // MENGUBAH TEKS REKOMENDASI BAJU BERDASARKAN WARNA YANG DIKLIK
+        function previewMatch(temaWarna, deskripsiBaju) {
+            const previewBox = document.getElementById('outfitPreviewBox');
+            
+            // Masukkan teks baru dengan animasi memudar ulang agar terasa dinamis
+            previewBox.style.animation = 'none';
+            previewBox.offsetHeight; /* Trigger reflow browser untuk reset animasi */
+            previewBox.style.animation = 'simpleFade 0.4s ease';
+            
+            previewBox.innerHTML = `<strong>${temaWarna}</strong> ${deskripsiBaju}`;
+            
+            // Berikan letupan bintang mini konstan saat Leni memilih warna
+            confetti({
+                particleCount: 8,
+                spread: 20,
+                origin: { y: 0.85 }
+            });
+        }
+
         // VENUE SELECTION
         let venueTerpilih = "";
         let isLocked = false; 
@@ -431,9 +496,15 @@
 
         }
 
-        // FUNGSI KUSTOM 3: MEMBUAT EFEK SCROLL HALUS & LAMBAT (ANTI-NGEBUT)
+        // EFEK SCROLL venue choice
         function smoothScrollTo(target, duration) {
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            // Jarak murni target dari paling atas dokumen HTML
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            
+            // KUNCI PERBAIKAN: Hitung posisi tengah layar agar elemen mendarat di center
+            // Rumus: Posisi Elemen - (Setengah Tinggi Layar Browser) + (Setengah Tinggi Kartu Kopi)
+            const targetPosition = elementPosition - (window.innerHeight / 2) + (target.offsetHeight / 2);
+            
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             let startTime = null;
@@ -442,7 +513,6 @@
                 if (startTime === null) startTime = currentTime;
                 const timeElapsed = currentTime - startTime;
                 
-                // Rumus matematika Easing (Ease-In-Out Quad) agar gerakan melambat di akhir secara alami
                 const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
                 
                 window.scrollTo(0, run);
