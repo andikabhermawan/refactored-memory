@@ -271,6 +271,7 @@ body {
 /* Tombol Rayakan / Confetti */
 .btn-confetti {
     background: linear-gradient(135deg, #ff6b8b 0%, var(--accent-royal-pink) 100%);
+    /* background: linear-gradient(135deg, #bf953f 0%, #d63384 100%); */
     color: white;
     border: none;
     padding: 16px 40px;
@@ -576,7 +577,8 @@ body {
 
 /* Desain Tombol Konfirmasi Bergaya Pop-in */
 .btn-confirm-venue {
-    background: linear-gradient(135deg, #bf953f 0%, var(--accent-royal-pink) 100%);
+    /* background: linear-gradient(135deg, #bf953f 0%, var(--accent-royal-pink) 100%); */
+    background: linear-gradient(135deg, #ff6b8b 0%, var(--accent-royal-pink) 100%);
     color: white;
     border: none;
     padding: 14px 35px;
@@ -641,6 +643,7 @@ body {
     display: flex;
     /* flex-direction: column; */
     align-items: center;
+    justify-content: center;
     gap: 40px;
 }
 
@@ -655,16 +658,14 @@ body {
     box-shadow: inset 0 0 15px rgba(214, 51, 132, 0.05);
     /* Kunci pengaman tambahan */
     overflow: hidden; 
-    flex-shrink: 0; /* Mencegah lingkaran gepeng di layar HP */
+    flex-shrink: 0; 
 }
 
-/* KODE BARU: Mengatur ukuran dan animasi PNG kustom */
 .dresscode-png-img {
-    width: 100%;  /* Mengatur agar gambar pas di tengah lingkaran dan tidak menempel ke tepi */
+    width: 100%; 
     height: 100%;
-    object-fit: contain; /* Menjaga proporsi asli gambar PNG agar tidak melar */
+    object-fit: contain; 
     
-    /* Menerapkan efek animasi bergoyang lembut yang sama */
     animation: gentleWiggle 3s infinite ease-in-out; 
 }
 
@@ -676,6 +677,7 @@ body {
 .dresscode-text {
     flex: 1;
     text-align: left;
+    max-width: 450px;
 }
 
 .dresscode-badge {
