@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Nyasar</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            /* Background gradasi senada dengan halaman lain */
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe3ed 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: #2b2b2b;
+        }
+
+        .error-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(214, 51, 132, 0.1);
+            border: 1px solid #ffe3ed;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            font-family: 'Inter', serif;
+            color: #d63384;
+            font-size: 4rem;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        h2 {
+            font-family: 'Inter', serif;
+            font-size: 1.5rem;
+            color: #2b2b2b;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #d63384 0%, #ff8fa3 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(214, 51, 132, 0.35);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="error-icon">🧭</div>
+        <h1>404</h1>
+        <h2>Oops, Kamu Nyasar!</h2>
+        <p>Halaman yang kamu cari nggak ada di rencana kita hari ini.</p>
+        
+        <a href="index.html" class="btn-home">
+            Kembali ke Jalan yang Benar
+        </a>
+    </div>
+
+</body>
+</html>
